@@ -14,7 +14,9 @@ public class MoveBase : ScriptableObject
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] int pp;
-    [SerializeField] CategoryMove category;   
+    [SerializeField] MoveCategory category;
+    [SerializeField] MoveEffects effects;
+    [SerializeField] MoveTarget target;
 
     public string Name
     {
@@ -46,26 +48,48 @@ public class MoveBase : ScriptableObject
         get { return pp; }
     }
 
-    public CategoryMove Category
+    public MoveCategory Category
     {
         get { return category; }
     }
-
-    public bool IsSpecial
+    public MoveEffects Effects
     {
-        get
-        {
-            if (category.Equals("Special"))
-                return true;
-            else
-                return false;
-        }
+        get { return effects; }
+    }
+
+    public MoveTarget Target
+    {
+        get { return target; }
+    }   
+
+}
+
+[System.Serializable]
+public class MoveEffects
+{
+    [SerializeField] List<StatBoost> boosts;
+
+    public List<StatBoost> Boosts
+    {
+        get { return boosts; }
     }
 }
 
-public enum CategoryMove
+[System.Serializable]
+public class StatBoost
+{
+    public Stat stat;
+    public int boost;
+}
+
+public enum MoveCategory
 {
     Special,
     Physical,
     Status
+}
+
+public enum MoveTarget
+{
+    Foe, Self
 }

@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Earthquet
   description: 
-  type: 4
+  type: 9
   power: 100
   accuracy: 80
   pp: 6
   category: 1
+  effects:
+    boosts: []
+  target: 0
