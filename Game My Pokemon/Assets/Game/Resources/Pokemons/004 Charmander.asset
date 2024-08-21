@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d980f821e8c66084984b52dfd25295e2, type: 3}
   m_Name: 004 Charmander
   m_EditorClassIdentifier: 
-  Pkmname: Charmander
+  namepkm: Charmander
   description: 
   frontSprite: {fileID: 21300000, guid: 219e84b3cf5e31c41a0e69527b06bbbb, type: 3}
-  frontSpriteAct: {fileID: 21300000, guid: 2a429b028aca3dc41ba53d6b31ff77d5, type: 3}
   backSprite: {fileID: 21300000, guid: 6185b543b77048944b05207eca87d91d, type: 3}
-  backSpriteAct: {fileID: 21300000, guid: b2dc0c38a694a4d44a371b1334a72800, type: 3}
   type1: 2
   type2: 0
-  maxHP: 39
+  maxHp: 0
   attack: 52
   defense: 43
   spAttack: 60

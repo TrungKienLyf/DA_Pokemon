@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d980f821e8c66084984b52dfd25295e2, type: 3}
   m_Name: 001 Bulbasaur
   m_EditorClassIdentifier: 
-  Pkmname: Bulbasaur
+  namepkm: Bulbasaur
   description: 
   frontSprite: {fileID: 21300000, guid: b806546cbfdcbc74b95a6f8bee5c7b86, type: 3}
-  frontSpriteAct: {fileID: 21300000, guid: 852667bd2a9c1fc4b9c7b786d272d605, type: 3}
   backSprite: {fileID: 21300000, guid: 2758b4e1057e5234285361c9a67b68e2, type: 3}
-  backSpriteAct: {fileID: 21300000, guid: 0dab0dc67278d0d468e02843ee7cbc00, type: 3}
   type1: 5
   type2: 8
-  maxHP: 45
+  maxHp: 0
   attack: 49
   defense: 49
   spAttack: 65

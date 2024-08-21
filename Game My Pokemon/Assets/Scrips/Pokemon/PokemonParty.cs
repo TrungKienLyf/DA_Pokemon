@@ -23,7 +23,7 @@ public class PokemonParty : MonoBehaviour
         }
     }
 
-    public Pokemon GetHeathyPokemon()
+    public Pokemon GetHealthyPokemon()
     {
         return pokemons.Where(x => x.HP > 0).FirstOrDefault();
     }

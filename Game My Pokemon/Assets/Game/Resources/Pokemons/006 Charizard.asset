@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d980f821e8c66084984b52dfd25295e2, type: 3}
   m_Name: 006 Charizard
   m_EditorClassIdentifier: 
-  Pkmname: Charizard
+  namepkm: Charizard
   description: 
   frontSprite: {fileID: 21300000, guid: ef330ab8384a16d40985465a81f5c707, type: 3}
   backSprite: {fileID: 21300000, guid: 6f649569b6708434d9e41ae8b0793cf7, type: 3}
   type1: 2
   type2: 10
-  maxHP: 78
+  maxHp: 0
   attack: 84
   defense: 78
   spAttack: 108

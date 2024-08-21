@@ -7,24 +7,12 @@ using DG.Tweening;
 public class BattleUnit : MonoBehaviour
 {
     [SerializeField] bool isPlayerUnit;
-    [SerializeField] BattleHud hud;
-
-    public bool IsPlayerUnit
-    {
-        get { return isPlayerUnit; }
-    }
-
-    public BattleHud Hud
-    {
-        get { return hud; }
-    }
 
     public Pokemon Pokemon { get; set; }
 
     Image image;
     Vector3 orginalPos;
     Color originalColor;
-
     private void Awake()
     {
         image = GetComponent<Image>();
@@ -36,11 +24,9 @@ public class BattleUnit : MonoBehaviour
     {
         Pokemon = pokemon;
         if (isPlayerUnit)
-            image.sprite = pokemon.Base.BackSprite;
+            image.sprite = Pokemon.Base.BackSprite;
         else
-            image.sprite = pokemon.Base.FrontSprite;
-
-        hud.SetData(pokemon);
+            image.sprite = Pokemon.Base.FrontSprite;
 
         image.color = originalColor;
         PlayEnterAnimation();
@@ -52,16 +38,18 @@ public class BattleUnit : MonoBehaviour
             image.transform.localPosition = new Vector3(-500f, orginalPos.y);
         else
             image.transform.localPosition = new Vector3(500f, orginalPos.y);
-        image.transform.DOLocalMoveX(orginalPos.x, 0.1f);
+
+        image.transform.DOLocalMoveX(orginalPos.x, 1f);
     }
 
     public void PlayAttackAnimation()
     {
         var sequence = DOTween.Sequence();
         if (isPlayerUnit)
-           sequence.Append(image.transform.DOLocalMoveX(orginalPos.x +50f, 0.25f));
+            sequence.Append(image.transform.DOLocalMoveX(orginalPos.x + 50f, 0.25f));
         else
-            sequence.Append(image.transform.DOLocalMoveX(orginalPos.x -50f, 0.25f));
+            sequence.Append(image.transform.DOLocalMoveX(orginalPos.x - 50f, 0.25f));
+
         sequence.Append(image.transform.DOLocalMoveX(orginalPos.x, 0.25f));
     }
 
@@ -75,8 +63,7 @@ public class BattleUnit : MonoBehaviour
     public void PlayFaintAnimation()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(image.transform.DOLocalMoveY(orginalPos.y-150f, 0.5f));
-        sequence.Append(image.DOColor(originalColor, 0.1f));
+        sequence.Append(image.transform.DOLocalMoveY(orginalPos.y - 150f, 0.5f));
         sequence.Join(image.DOFade(0f, 0.5f));
     }
 }

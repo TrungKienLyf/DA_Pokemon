@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Pokemon", menuName ="Pokemon/Create new pokemon")]
-
+[CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {
-    [SerializeField] string Pkmname;
+    [SerializeField] string namepkm;
 
     [TextArea]
     [SerializeField] string description;
@@ -17,8 +16,8 @@ public class PokemonBase : ScriptableObject
     [SerializeField] PokemonType type1;
     [SerializeField] PokemonType type2;
 
-    //Base Stats 
-    [SerializeField] int maxHP;
+    // Base Stats
+    [SerializeField] int maxHp;
     [SerializeField] int attack;
     [SerializeField] int defense;
     [SerializeField] int spAttack;
@@ -29,7 +28,7 @@ public class PokemonBase : ScriptableObject
 
     public string Name
     {
-        get { return Pkmname; }
+        get { return namepkm; }
     }
 
     public string Description
@@ -42,13 +41,10 @@ public class PokemonBase : ScriptableObject
         get { return frontSprite; }
     }
 
-    
-
     public Sprite BackSprite
     {
         get { return backSprite; }
     }
-    
 
     public PokemonType Type1
     {
@@ -62,7 +58,7 @@ public class PokemonBase : ScriptableObject
 
     public int MaxHp
     {
-        get { return maxHP; }
+        get { return maxHp; }
     }
 
     public int Attack
@@ -70,14 +66,14 @@ public class PokemonBase : ScriptableObject
         get { return attack; }
     }
 
-    public int Defense
-    {
-        get { return defense; }
-    }
-
     public int SpAttack
     {
         get { return spAttack; }
+    }
+
+    public int Defense
+    {
+        get { return defense; }
     }
 
     public int SpDefense
@@ -90,7 +86,7 @@ public class PokemonBase : ScriptableObject
         get { return speed; }
     }
 
-    public List<LearnableMove> LearnableMove
+    public List<LearnableMove> LearnableMoves
     {
         get { return learnableMoves; }
     }
@@ -124,7 +120,7 @@ public enum PokemonType
     Ice,
     Fighting,
     Poison,
-    Ground,    
+    Ground,
     Flying,
     Psychic,
     Bug,
@@ -140,7 +136,7 @@ public class TypeChart
 {
     static float[][] chart =
     {
-        //                              NOR     FIR     WAT     ELE     GRA     ICE     FIG     POI     GRO     FLY     PFY     BUG     ROC     GHO     DRA     DAR     STE     FAIRY
+      //                              NOR     FIR     WAT     ELE     GRA     ICE     FIG     POI     GRO     FLY     PFY     BUG     ROC     GHO     DRA     DAR     STE     FAIRY
         /*NORMAL*/      new float[] {   1f,     1f,     1f,     1f,     1f,     1f,     1f,     1f,     1f,     1f,     1f,     1f,     0.5f,   0f,     1f,     1f,     0.5f,   1f     },
         /*FIRE*/        new float[] {   1f,     0.5f,   0.5f,   1f,     2f,     2f,     1f,     1f,     1f,     1f,     1f,     2f,     0.5f,   1f,     0.5f,   1f,     2f,     1f     },
         /*WATER*/       new float[] {   1f,     2f,     0.5f,   1f,     0.5f,   1f,     1f,     1f,     2f,     1f,     1f,     1f,     2f,     1f,     0.5f,   1f,     1f,     1f     },
@@ -165,12 +161,11 @@ public class TypeChart
     public static float GetEffectiveness(PokemonType attackType, PokemonType defenseType)
     {
         if (attackType == PokemonType.None || defenseType == PokemonType.None)
-                return 1f;
+            return 1;
 
         int row = (int)attackType - 1;
         int col = (int)defenseType - 1;
 
         return chart[row][col];
     }
-
 }
