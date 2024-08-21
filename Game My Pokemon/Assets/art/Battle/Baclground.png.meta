@@ -1,0 +1,909 @@
+fileFormatVersion: 2
+guid: af198fadabb60a645a4500cfa59e9fe9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b69473724f3a34bbaad61c44c07be3
+      internalID: 508750984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1848
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b16a11aa26028d14cbf34343367b8ce2
+      internalID: -817842814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1848
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608fa6c5f9622704097c04ce9c0fe768
+      internalID: 872260192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1681
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 140d1abc5f5b1c34787e146f9a2c7b3e
+      internalID: 1414874618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1680
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1bbb02f54bfb454191fd970b02f536c
+      internalID: -537302264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1680
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e6411381ee3e2409d83b9455c4d76d
+      internalID: -949543284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1512
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99b10300dd00414c9d18c26ee0ce120
+      internalID: -1715645004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1512
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aafc898dc6451f4fb29b8902f186062
+      internalID: 1440269695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1512
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23dbb23cc9da57a4693ac346e8575d6f
+      internalID: -1932818074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1344
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc36bd112d20834e9a8f48f16d2c40e
+      internalID: 1320086240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1344
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea720fc55a87fc47b0cc909eaa62d71
+      internalID: 1418831174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1344
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dea8de0d6ee44c46bc038de822d233a
+      internalID: -936849306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1176
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a6bd3d9221e2c4b8e5d6ae73206455
+      internalID: 1067326503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_25
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1176
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5142ffdfa01a4304aadb8bc17295278c
+      internalID: -684089642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_26
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1176
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db222548757c56a498b24aa606623071
+      internalID: 814417299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27c4060496e4d745bbd3f51f91555b9
+      internalID: 1298385795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1008
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792e86bb49458414ba11f3ace3b70c6a
+      internalID: -634250362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1008
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17312df4aead08641b979048368f257b
+      internalID: 682216049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9a86de4ea6d5443926aa32ff1efcee
+      internalID: -294583785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 840
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9c8eaeefe4bdd40b32216878e9c219
+      internalID: 712416365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_38
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 840
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475a698f32af3394a8da1bb338031560
+      internalID: -1460541986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373c5981081ab864cbb4e340b986b7c4
+      internalID: 500304880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 672
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716421a3a44a3e841a32ed5c97709288
+      internalID: 317910181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 672
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e45fccff3902741859a6163938589f
+      internalID: -357601153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd66b115978ea404c91f541b70bdc526
+      internalID: 1812180621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_49
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 504
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0b4d15b5d3c854d8a6e65755bd71f6
+      internalID: -1275774411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_50
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 504
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a164523b62b97c4ba07df06584c0006
+      internalID: -224390855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fac253491f45b4c8a61729c5fef47c
+      internalID: 850819377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_52
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 336
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202e0357c3291394f99393b1ecbe9c99
+      internalID: 491235571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_53
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 336
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c93b81016ddac4982d4536f0ccb796
+      internalID: -1491671759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 168
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e4129aac2d13a40bcac037709ea7a9
+      internalID: 980085429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_55
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 168
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5117923db89504a857d04b7bea3e14
+      internalID: -909401031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_56
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 168
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b41fec25367b184bbb296abf5a73fcf
+      internalID: -1419934894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f581a3363f63cc468cb2e3abe0c549d
+      internalID: 1043834025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Platinum - Battle Backgrounds (1)_58
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e31b224b0713b41438174d43cecf6299
+      internalID: -850888107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_0: 508750984
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_1: -817842814
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_10: -546202785
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_11: 1943508888
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_12: -1715645004
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_13: 1440269695
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_14: -1932818074
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_15: 2076359544
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_16: 1607332493
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_17: 239889390
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_18: 1320086240
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_19: 1418831174
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_2: 872260192
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_20: -936849306
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_21: 1063474380
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_22: -540123172
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_23: -168366009
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_24: 1067326503
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_25: -684089642
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_26: 814417299
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_27: 2039418407
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_28: -293199816
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_29: 460540713
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_3: -443345329
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_30: 1298385795
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_31: -634250362
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_32: 682216049
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_33: 865583205
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_34: 20709181
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_35: 1146065386
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_36: -294583785
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_37: 712416365
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_38: -1460541986
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_39: 18865716
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_4: -565894197
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_40: 768726591
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_41: -1355370487
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_42: 500304880
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_43: 317910181
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_44: -357601153
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_45: 1387835437
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_46: -1859442057
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_47: -8643644
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_48: 1812180621
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_49: -1275774411
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_5: -194373944
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_50: -224390855
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_51: 850819377
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_52: 491235571
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_53: -1491671759
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_54: 980085429
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_55: -909401031
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_56: -1419934894
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_57: 1043834025
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_58: -850888107
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_59: 1659644488
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_6: 1414874618
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_7: -537302264
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_8: -949543284
+      DS DSi - Pokemon Platinum - Battle Backgrounds (1)_9: -1628687811
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

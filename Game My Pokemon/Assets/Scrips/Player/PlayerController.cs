@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public LayerMask solidObjectsLayer;
+    public LayerMask grassLayer;
+
+    public event Action OnEncountered;
 
     private bool isMoving;
     private Vector2 input;
@@ -17,7 +21,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if (!isMoving)
         {
@@ -55,14 +59,28 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+        CheckForEncounters();
     }
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer ) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.3f, solidObjectsLayer ) != null)
         {
             return false;
         }
         return true;
+    }
+
+    private void CheckForEncounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.3f, grassLayer) != null)
+        {
+            if (UnityEngine.Random.Range(1,101)<= 10)
+            {
+                animator.SetBool("isMoving", false);
+                OnEncountered();
+            }
+        }
     }
 }
