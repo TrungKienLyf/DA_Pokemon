@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +27,9 @@ public class Pokemon
     public List<Move> Moves { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
-
+    public Condition Status { get; private set; }
+    public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public bool HpChanged { get; set; }
     public void Init()
     {
         // Generate Moves
@@ -44,14 +46,7 @@ public class Pokemon
         CalculateStats();
         HP = MaxHp;
 
-        StatBoosts = new Dictionary<Stat, int>()
-        {
-            {Stat.Attack, 0},
-            {Stat.Defense, 0},
-            {Stat.SpAttack, 0},
-            {Stat.SpDefense, 0},
-            {Stat.Speed, 0},
-        };
+        ResetStatBoost();
     }
 
     void CalculateStats()
@@ -64,6 +59,18 @@ public class Pokemon
         Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.Speed * Level * 2) / 100f) + 5);
 
         MaxHp = Mathf.FloorToInt((Base.MaxHp * Level * 2 ) / 100f) +Level + 10;
+    }
+
+    void ResetStatBoost()
+    {
+        StatBoosts = new Dictionary<Stat, int>()
+        {
+            {Stat.Attack, 0},
+            {Stat.Defense, 0},
+            {Stat.SpAttack, 0},
+            {Stat.SpDefense, 0},
+            {Stat.Speed, 0},
+        };
     }
 
     int GetStat(Stat stat)
@@ -90,7 +97,12 @@ public class Pokemon
 
             StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
 
-            Debug.Log($"{stat} has been bossted to {StatBoosts[stat]}");
+            if (boost > 0)
+                StatusChanges.Enqueue($"Chỉ số {stat} của {Base.Name} tăng lên!");
+            else
+                StatusChanges.Enqueue($"Chỉ số {stat} của {Base.Name} giảm xuống!");
+
+            Debug.Log($"Chỉ số {stat} đã bị thay đổi  {StatBoosts[stat]}");
         }
     }
 
@@ -148,20 +160,37 @@ public class Pokemon
         float d = a * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        HP -= damage;
-        if (HP <= 0)
-        {
-            HP = 0;
-            damageDetails.Fainted = true;
-        }
-
+        UpdateHP(damage);
+        
         return damageDetails;
+    }
+
+    public void UpdateHP(int damage)
+    {
+        HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        HpChanged = true;
+    }
+
+    public void SetStatus(ConditionID conditionId)
+    {
+        Status = ConditionsDB.Conditions[conditionId];
+        StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
+    }
+
+    public void OnAfterTurn()
+    {
+        Status?.OnAfterTurn?.Invoke(this);
     }
 
     public Move GetRandomMove()
     {
         int r = Random.Range(0, Moves.Count);
         return Moves[r];
+    }
+
+    public void OnBattleOver()
+    {
+        ResetStatBoost();
     }
 }
 
