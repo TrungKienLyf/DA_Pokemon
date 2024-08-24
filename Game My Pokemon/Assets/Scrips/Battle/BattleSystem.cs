@@ -104,6 +104,15 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator RunMove(BattleUnit sourceUnit, BattleUnit targetUnit, Move move)
     {
+        bool canRunMove = sourceUnit.Pokemon.OnBeforeMove();
+        if (!canRunMove)
+        {
+            yield return ShowStatusChanges(sourceUnit.Pokemon);
+            yield return sourceUnit.Hud.UpdateHP();
+            yield break;
+        }
+        yield return ShowStatusChanges(sourceUnit.Pokemon);
+
         move.PP--;
         yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} sử dụng {move.Base.Name}");
 
@@ -137,7 +146,7 @@ public class BattleSystem : MonoBehaviour
         yield return sourceUnit.Hud.UpdateHP();
         if (sourceUnit.Pokemon.HP <= 0)
         {
-            yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} Fainted");
+            yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.Name} đã bất tỉnh");
             sourceUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(2f);
 
@@ -148,7 +157,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target)
     {
         var effects = move.Base.Effects;
-        //thay đỏi chỉ số
+        //thay đổi chỉ số
         if (effects.Boosts != null)
         {
             if (move.Base.Target == MoveTarget.Self)
@@ -157,10 +166,16 @@ public class BattleSystem : MonoBehaviour
                 target.ApplyBoosts(effects.Boosts);
         }
 
-        //tháy đổi trạng thái hiệu ứng của pokemon
+        //thay đổi hiệu ứng của pokemon
         if (effects.Status != ConditionID.none)
         {
             target.SetStatus(effects.Status);
+        }
+
+        //thay đổi trạng thái của pokemon
+        if (effects.ViolatileStatus != ConditionID.none)
+        {
+            target.SetVolatileStatus(effects.ViolatileStatus);
         }
 
         yield return ShowStatusChanges(source);
