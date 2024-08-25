@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -138,7 +138,13 @@ public enum Stat
     Defense,
     SpAttack,
     SpDefense,
-    Speed
+    Speed,
+
+   /* 2 thuộc tính này dùng để xác định độ chính xác khi tung kỹ năng xem nó trúng hay 
+    * không, và chỉ số nào chỉ thay đổi bởi một số kỹ năng tăng lên hoặc thuộc tính chứ 
+    * không thay dổi bởi cấp độ của pokemon*/ 
+    Accuracy,
+    Evasion
 }
 
 public class TypeChart
