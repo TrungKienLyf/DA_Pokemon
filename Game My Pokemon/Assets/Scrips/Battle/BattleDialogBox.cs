@@ -5,19 +5,23 @@ using UnityEngine.UI;
 
 public class BattleDialogBox : MonoBehaviour
 {
+    [SerializeField] int lettersPerSecond;
+    [SerializeField] Color highlightedColor;
+
     [SerializeField] Text dialogText;
     [SerializeField] GameObject actionSelector;
     [SerializeField] GameObject moveSelector;
     [SerializeField] GameObject moveDetails;
-
-    [SerializeField] int letterPerSecond;
-    [SerializeField] Color highlightedColor;
+    [SerializeField] GameObject choiceBox;
 
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> moveTexts;
 
     [SerializeField] Text ppText;
     [SerializeField] Text typeText;
+
+    [SerializeField] Text yesText;
+    [SerializeField] Text noText;
 
     public void SetDialog(string dialog)
     {
@@ -30,29 +34,34 @@ public class BattleDialogBox : MonoBehaviour
         foreach(var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
-            yield return new WaitForSeconds(1f / letterPerSecond);
+            yield return new WaitForSeconds(1f / lettersPerSecond);
         }
 
         yield return new WaitForSeconds(1f);
     }
 
-    public void EnableDialogText(bool enable)
+    public void EnableDialogText(bool enabled)
     {
-        dialogText.enabled = enable;
+        dialogText.enabled = enabled;
     }
 
-    public void EnableActionSelector(bool enable)
+    public void EnableActionSelector(bool enabled)
     {
-        actionSelector.SetActive(enable);
+        actionSelector.SetActive(enabled);
     }
 
-    public void EnableMoveSelector(bool enable)
+    public void EnableMoveSelector(bool enabled)
     {
-        moveSelector.SetActive(enable);
-        moveDetails.SetActive(enable);
+        moveSelector.SetActive(enabled);
+        moveDetails.SetActive(enabled);
     }
 
-    public void UpdateActionSelection(int selectedAction)
+    public void EnableChoiceBox(bool enabled)
+    {
+        choiceBox.SetActive(enabled);
+    }
+
+        public void UpdateActionSelection(int selectedAction)
     {
         for(int i=0; i < actionTexts.Count; ++i)
         {
@@ -90,6 +99,20 @@ public class BattleDialogBox : MonoBehaviour
                 moveTexts[i].text = moves[i].Base.Name;
             else
                 moveTexts[i].text = "-";
+        }
+    }
+
+    public void UpdateChoiceBox(bool yesSelected)
+    {
+        if (yesSelected)
+        {
+            yesText.color = highlightedColor;
+            noText.color = Color.black;
+        }
+        else
+        {
+            yesText.color = Color.black;
+            noText.color = highlightedColor;
         }
     }
 }
