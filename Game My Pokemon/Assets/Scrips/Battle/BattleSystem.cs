@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] PartyScreen partyScreen;
     [SerializeField] Image playerImage;
     [SerializeField] Image trainerImage;
+    [SerializeField] GameObject pokeballSprite;
+    
 
     public event Action<bool> OnBattleOver;
 
@@ -37,6 +40,7 @@ public class BattleSystem : MonoBehaviour
     {
         this.playerParty = playerParty;
         this.wildPokemon = wildPokemon;
+        player = playerParty.GetComponent<PlayerController>();
         StartCoroutine(SetupBattle());
     }
 
@@ -148,10 +152,11 @@ public class BattleSystem : MonoBehaviour
             int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
             int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
 
-            // Check who goes first
+            // Check ai xem ai có chiêu thức ưu tiên cao hơn
             bool playerGoesFirst = true;
             if (enemyMovePriority > playerMovePriority)
                 playerGoesFirst = false;
+            //nều cùng độ ưu tiên
             else if(enemyMovePriority == playerMovePriority)            
                 playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
 
@@ -160,14 +165,14 @@ public class BattleSystem : MonoBehaviour
 
             var secondPokemon = secondUnit.Pokemon;
 
-            // First Turn
+            // Lượt tấn công của pokemon có speed cao hơn
             yield return RunMove(firstUnit, secondUnit, firstUnit.Pokemon.CurrentMove);
             yield return RunAfterTurn(firstUnit);
             if (state == BattleState.BattleOver) yield break;
 
             if (secondPokemon.HP > 0)
             {
-                // Second Turn
+                // Lượt tấn công của pokemon có speed thấp hơn
                 yield return RunMove(secondUnit, firstUnit, secondUnit.Pokemon.CurrentMove);
                 yield return RunAfterTurn(secondUnit);
                 if (state == BattleState.BattleOver) yield break;
@@ -181,8 +186,13 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.Busy;
                 yield return SwitchPokemon(selectedPokemon);
             }
+            else if (playerAction == BattleAction.UseItem)
+            {
+                dialogBox.EnableActionSelector(false);
+                yield return ThrowPokeball();
+            }
 
-            // Enemy Turn
+            // Lượt đói thủ
             var enemyMove = enemyUnit.Pokemon.GetRandomMove();
             yield return RunMove(enemyUnit, playerUnit, enemyMove);
             yield return RunAfterTurn(enemyUnit);
@@ -415,6 +425,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 2)
             {
                 // Bag
+                StartCoroutine(RunTurns(BattleAction.UseItem));
             }
             else if (currentAction == 1)
             {
@@ -583,5 +594,84 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{trainer.Name} đã cho {nextPokemon.Base.Name} tham chiến!");
 
         state = BattleState.RunningTurn;
+    }
+
+    IEnumerator ThrowPokeball()
+    {
+        state = BattleState.Busy;
+
+        if (isTrainerBattle)
+        {
+            yield return dialogBox.TypeDialog($"Bạn không thể bắt pokemon của nhà huấn luyện khác!");
+            state = BattleState.RunningTurn;
+            yield break;
+        }
+
+        yield return dialogBox.TypeDialog($"{player.Name} sử dụng Pokeball !!!");
+
+        var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2, 0), Quaternion.identity);
+        var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
+
+        // Animations ném pokeball
+        yield return pokeball.transform.DOJump(enemyUnit.transform.position + new Vector3(0, 2), 2f, 1, 1f).WaitForCompletion();
+        yield return enemyUnit.PlayCaptureAnimation();
+        yield return pokeball.transform.DOMoveY(enemyUnit.transform.position.y - 1.3f, 0.5f).WaitForCompletion();
+
+        int shakeCount = TryToCatchPokemon(enemyUnit.Pokemon);
+
+        for (int i = 0; i < Mathf.Min(shakeCount, 3); ++i)
+        {
+            yield return new WaitForSeconds(0.5f);
+            yield return pokeball.transform.DOPunchRotation(new Vector3(0, 0, 10f), 0.8f).WaitForCompletion();
+        }
+
+        if (shakeCount == 4)
+        {
+            // Bắt được Pokemon 
+            yield return dialogBox.TypeDialog($"Tuyệt vời, bạn đã bắt được {enemyUnit.Pokemon.Base.Name} ");
+            yield return pokeball.DOFade(0, 1.5f).WaitForCompletion();
+
+            playerParty.AddPokemon(enemyUnit.Pokemon);
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} đã gia nhập đội của bạn");
+
+            Destroy(pokeball);
+            BattleOver(true);
+        }
+        else
+        {
+            // Pokemon thoát khỏi pokeball
+            yield return new WaitForSeconds(1f);
+            pokeball.DOFade(0, 0.2f);
+            yield return enemyUnit.PlayBreakOutAnimation();
+
+            if (shakeCount < 2)
+                yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} đã thoát ra");
+            else
+                yield return dialogBox.TypeDialog($"Gần bắt được rồi");
+
+            Destroy(pokeball);
+            state = BattleState.RunningTurn;
+        }
+    }
+
+    int TryToCatchPokemon(Pokemon pokemon)
+    {
+        float a = (3 * pokemon.MaxHp - 2 * pokemon.HP) * pokemon.Base.CatchRate * ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);
+
+        if (a >= 255)
+            return 4;
+
+        float b = 1048560 / Mathf.Sqrt(Mathf.Sqrt(16711680 / a));
+
+        int shakeCount = 0;
+        while (shakeCount < 4)
+        {
+            if (UnityEngine.Random.Range(0, 65535) >= b)
+                break;
+
+            ++shakeCount;
+        }
+
+        return shakeCount;
     }
 }
