@@ -1,14 +1,13 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISavable
 {
     [SerializeField] string characterName;
     [SerializeField] Sprite sprite;
-
-    const float offsetY = 0.3f;
 
     private Vector2 input;
 
@@ -53,18 +52,40 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveOver()
     {
-        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.i.TriggerableLayers);
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
 
         foreach (var collider in colliders)
         {
             var triggerable = collider.GetComponent<IPlayerTriggerable>();
             if (triggerable != null)
-            {
-                character.Animator.IsMoving = false;
+            {                
                 triggerable.OnPlayerTriggered(this);
                 break;
             }
         }
+    }
+
+    public object CaptureState()
+    {
+        var saveData = new PlayerSaveData()
+        {
+            position = new float[] { transform.position.x, transform.position.y },
+            pokemons = GetComponent<PokemonParty>().Pokemons.Select(p => p.GetSaveData()).ToList()
+        };
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerSaveData)state;
+
+        // load lại vị trí đã save
+        var pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1]);
+
+        // load lại đội hình pokemon của bạn
+        GetComponent<PokemonParty>().Pokemons = saveData.pokemons.Select(s => new Pokemon(s)).ToList();
     }
 
     public string Name
@@ -76,4 +97,12 @@ public class PlayerController : MonoBehaviour
     {
         get => sprite;
     }
+
+    public Character Character => character;
+}
+[Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<PokemonSaveData> pokemons;
 }
