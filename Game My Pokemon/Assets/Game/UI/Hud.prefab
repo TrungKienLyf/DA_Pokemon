@@ -183,9 +183,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000206, y: 1.0000206, z: 1.0000206}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 961346522005705504}
-  - {fileID: 3612240131839601985}
+  m_Children: []
   m_Father: {fileID: 6459128240402459725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -429,14 +427,14 @@ RectTransform:
   m_GameObject: {fileID: 6695897819995084790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000206, y: 1.0000206, z: 1.0000206}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1809396614063841182}
+  m_Father: {fileID: 6459128240402459725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -158.2, y: -37.9}
+  m_AnchoredPosition: {x: -256.4013, y: -18.050776}
   m_SizeDelta: {x: 59.0279, y: 32.2092}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6142244978789527349
@@ -512,6 +510,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3612240131839601985}
+  - {fileID: 961346522005705504}
   - {fileID: 1809396614063841182}
   - {fileID: 7181325803477579151}
   m_Father: {fileID: 0}
@@ -607,14 +607,14 @@ RectTransform:
   m_GameObject: {fileID: 7333799279049613634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000206, y: 1.0000206, z: 1.0000206}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1809396614063841182}
+  m_Father: {fileID: 6459128240402459725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 47.12716, y: -0.000011444092}
+  m_AnchoredPosition: {x: -51.070015, y: 19.85001}
   m_SizeDelta: {x: 81.16, y: 39.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3187868089211944791

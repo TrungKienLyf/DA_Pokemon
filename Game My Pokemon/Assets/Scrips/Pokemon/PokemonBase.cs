@@ -24,9 +24,35 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] int expYield;
+    [SerializeField] GrowthRate growthRate;
+
     [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves;
+
+    public static int MaxNumOfMoves { get; set; } = 4;
+
+    public int GetExpForLevel(int level)
+    {
+        if (growthRate == GrowthRate.Fast)
+        {
+            return 4 * (level * level * level) / 5;
+        }
+        else if (growthRate == GrowthRate.MediumFast)
+        {
+            return level * level * level;
+        }
+        else if (growthRate == GrowthRate.MediumSlow)
+        {
+            return 6 * (level * level * level - 75 * level * level + 5000 * level - 700) / 5;
+        }
+        else if (growthRate == GrowthRate.Slow)
+        {
+            return 5 * (level * level * level) / 4;
+        }
+        return -1;
+    }
 
     public string Name
     {
@@ -94,6 +120,10 @@ public class PokemonBase : ScriptableObject
     }
 
     public int CatchRate => catchRate;
+
+    public int ExpYield => expYield;
+
+    public GrowthRate GrowthRate => growthRate;
 }
 
 [System.Serializable]
@@ -134,6 +164,11 @@ public enum PokemonType
     Dark,
     Steel,
     Fairy
+}
+
+public enum GrowthRate
+{
+    Fast, MediumFast,MediumSlow, Slow
 }
 
 public enum Stat

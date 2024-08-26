@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] string name;
+    [SerializeField] string characterName;
     [SerializeField] Sprite sprite;
 
-    public event Action OnEncountered;
-    public event Action<Collider2D> OnEnterTrainersView;
+    const float offsetY = 0.3f;
 
     private Vector2 input;
 
@@ -54,35 +53,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveOver()
     {
-        CheckForEncounters();
-        CheckIfInTrainerView();
-    }
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.i.TriggerableLayers);
 
-    private void CheckForEncounters()
-    {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null)
+        foreach (var collider in colliders)
         {
-            if (UnityEngine.Random.Range(1,101)<= 10)
+            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            if (triggerable != null)
             {
                 character.Animator.IsMoving = false;
-                OnEncountered();
+                triggerable.OnPlayerTriggered(this);
+                break;
             }
-        }
-    }
-
-    private void CheckIfInTrainerView()
-    {
-        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.FovLayer);
-        if (collider != null)
-        {
-            character.Animator.IsMoving = false;
-            OnEnterTrainersView?.Invoke(collider);
         }
     }
 
     public string Name
     {
-        get => name;
+        get => characterName;
     }
 
     public Sprite Sprite

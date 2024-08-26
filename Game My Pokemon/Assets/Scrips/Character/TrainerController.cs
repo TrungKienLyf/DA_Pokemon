@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainerController : MonoBehaviour, Interactable
 {
-    [SerializeField] string name;
+    [SerializeField] string trainerName;
     [SerializeField] Sprite sprite;
     [SerializeField] Dialog dialog;
     [SerializeField] Dialog dialogAfterBattle;
@@ -88,7 +88,7 @@ public class TrainerController : MonoBehaviour, Interactable
 
     public string Name
     {
-        get => name;
+        get => trainerName;
     }
 
     public Sprite Sprite
