@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 2511816555486680503}
   - component: {fileID: 2457840282041479705}
   - component: {fileID: 7543678675671480357}
+  - component: {fileID: 5942094087576796223}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -350,3 +351,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 
+--- !u!114 &5942094087576796223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799934780382464812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd08c091d75e1034487403e8baceea85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - item: {fileID: 11400000, guid: ccb96745b02df2d4891cb75bf9c3ed5f, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: 9f6b06bce98977d4299681e7b9f8e4df, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 58a9f3dd78cefc94f95c4f3385ddb2da, type: 2}
+    count: 5
+  - item: {fileID: 11400000, guid: 47ec1e37996d34142926bc44e579c4f5, type: 2}
+    count: 7
+  - item: {fileID: 11400000, guid: 8eaf29a05347aef4a809b888078475db, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 8d7a96c55b73a2a468a2c29f7fe9f1e3, type: 2}
+    count: 12
+  - item: {fileID: 11400000, guid: 98fd6c4ef112feb419cb275465141c2b, type: 2}
+    count: 15
+  - item: {fileID: 11400000, guid: 99e7f25aec052764ca1221268d3ec878, type: 2}
+    count: 6
+  - item: {fileID: 11400000, guid: 2117a0c1a28aed246bd338ea496a0a53, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: 4d2e052096f6700448e21ba154546ca0, type: 2}
+    count: 6
+  pokeballSlots:
+  - item: {fileID: 11400000, guid: 844b87a04d2155f41947395aa482aa06, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 4644ae1599bc6904f87574c65c18d27b, type: 2}
+    count: 8
+  - item: {fileID: 11400000, guid: 510a5399aa6bca542bf163449634be37, type: 2}
+    count: 5
+  tmSlots: []

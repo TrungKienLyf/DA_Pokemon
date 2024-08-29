@@ -24,7 +24,7 @@ public class ConditionsDB
                 StartMessage = "đã bị trúng độc",
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
-                    pokemon.UpdateHP(pokemon.MaxHp / 8);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 8);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} nhận sát thương vì đang trúng độc");
                 }
             }
@@ -37,7 +37,7 @@ public class ConditionsDB
                 StartMessage = "đã bị bỏng",
                 OnAfterTurn = (Pokemon pokemon) =>
                 {
-                    pokemon.UpdateHP(pokemon.MaxHp / 16);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 16);
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} nhận sát thương vì bị bỏng");
                 }
             }
@@ -133,7 +133,7 @@ public class ConditionsDB
 
                     // bị thương bởi bối rối
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} đang bối rối");
-                    pokemon.UpdateHP(pokemon.MaxHp / 8);
+                    pokemon.DecreaseHP(pokemon.MaxHp / 8);
                     pokemon.StatusChanges.Enqueue($"Nó đã tự gậy sát thương cho mình vì đang trong trạng thái bối rối");
                     return false;
                 }
