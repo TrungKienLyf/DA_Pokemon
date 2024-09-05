@@ -7,15 +7,10 @@ using UnityEngine;
 public class PokemonParty : MonoBehaviour
 {
     [SerializeField] List<Pokemon> pokemons;
-
     public event Action OnUpdated;
-
     public List<Pokemon> Pokemons
     {
-        get
-        {
-            return pokemons;
-        }
+        get { return pokemons;}
         set
         {
             pokemons = value;
@@ -30,11 +25,7 @@ public class PokemonParty : MonoBehaviour
             pokemon.Init();
         }
     }
-
-    private void Start()
-    {
-        
-    }
+    private void Start() { }
 
     public Pokemon GetHealthyPokemon()
     {
@@ -50,8 +41,23 @@ public class PokemonParty : MonoBehaviour
         }
         else
         {
-            // sẽ lm: thêm vào PC nếu có trên 6 
+            // sẽ lm: thêm vào PC nếu có trên 6 pokemon
         }
+    }
+
+    public IEnumerator CheckForEvolutions()
+    {
+        foreach(var pokemon in pokemons)
+        {
+            var evolution = pokemon.CheckForEvolution();
+            if(evolution != null)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"{pokemon.Base.Name} tiến hóa thành {evolution.EvolvesInfo.Name}");
+                pokemon.Evolve(evolution);
+            }
+        }
+
+        OnUpdated?.Invoke();
     }
 
     public static PokemonParty GetPlayerParty()

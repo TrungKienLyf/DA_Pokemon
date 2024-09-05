@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6141625387140490087}
   - component: {fileID: 2647276592566199984}
   - component: {fileID: 8382791940802621869}
+  - component: {fileID: 5317581628065154357}
   m_Layer: 10
   m_Name: NPC
   m_TagString: Untagged
@@ -225,3 +226,16 @@ MonoBehaviour:
   - {fileID: 839924133, guid: 130954d3051e8884fa84b9cda480e8ff, type: 3}
   - {fileID: 1059433279, guid: 130954d3051e8884fa84b9cda480e8ff, type: 3}
   defaultDirection: 2
+--- !u!114 &5317581628065154357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598288894315077649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4881f89f8b930e34489bbb86116ccd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 

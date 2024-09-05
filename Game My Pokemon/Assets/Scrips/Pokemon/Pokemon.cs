@@ -18,17 +18,11 @@ public class Pokemon
     }
     public PokemonBase Base
     {
-        get
-        {
-            return _base;
-        }
+        get        { return _base; }
     }
     public int Level
     {
-        get
-        {
-            return level;
-        }
+        get        { return level; }
     }
 
     public int Exp { get; set; }
@@ -71,7 +65,7 @@ public class Pokemon
 
     public Pokemon(PokemonSaveData saveData)
     {
-        _base = PokemonDB.GetPokemonByName(saveData.name);
+        _base = PokemonDB.GetObjectByName(saveData.name);
         HP = saveData.hp;
         level = saveData.level;
         Exp = saveData.exp;
@@ -93,7 +87,7 @@ public class Pokemon
     {
         var saveData = new PokemonSaveData()
         {
-            name = Base.Name,
+            name = Base.name,
             hp = HP,
             level = Level,
             exp = Exp,
@@ -179,12 +173,28 @@ public class Pokemon
         return Base.LearnableMoves.Where(x => x.Level == level).FirstOrDefault();
     }
 
-    public void LearnMove(LearnableMove moveToLearn)
+    public void LearnMove(MoveBase moveToLearn)
     {
         if (Moves.Count > PokemonBase.MaxNumOfMoves)
             return;
 
-        Moves.Add(new Move(moveToLearn.Base));
+        Moves.Add(new Move(moveToLearn));
+    }
+
+    public bool HasMove(MoveBase moveToCheck)
+    {
+        return Moves.Count(m => m.Base == moveToCheck) > 0;
+    }
+
+    public Evolution CheckForEvolution()
+    {
+        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel == level);
+    }
+
+    public void Evolve(Evolution evolution)
+    {
+        _base = evolution.EvolvesInfo;
+        CalculateStats();
     }
     public int MaxHp { get; private set; }
 
@@ -271,9 +281,7 @@ public class Pokemon
     {
         Status = null;
         OnStatusChanged?.Invoke();
-    }
-
-    
+    }   
 
     public void SetVolatileStatus(ConditionID conditionId)
     {

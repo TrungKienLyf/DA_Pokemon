@@ -30,6 +30,9 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves;
+    [SerializeField] List<MoveBase> learnableByItems;
+
+    [SerializeField] List<Evolution> evolutions;
 
     public static int MaxNumOfMoves { get; set; } = 4;
 
@@ -119,6 +122,9 @@ public class PokemonBase : ScriptableObject
         get { return learnableMoves; }
     }
 
+    public List<MoveBase> LearnableByItems => learnableByItems;
+    public List<Evolution> Evolutions => evolutions;
+
     public int CatchRate => catchRate;
 
     public int ExpYield => expYield;
@@ -143,27 +149,20 @@ public class LearnableMove
     }
 }
 
+[System.Serializable]
+public class Evolution
+{
+    [SerializeField] PokemonBase evolvesInfo;
+    [SerializeField] int requiredLevel;
+
+    public PokemonBase EvolvesInfo => evolvesInfo;
+    public int RequiredLevel => requiredLevel;
+}
+
 public enum PokemonType
 {
-    None,
-    Nomal,
-    Fire,
-    Water,
-    Electric,
-    Grass,
-    Ice,
-    Fighting,
-    Poison,
-    Ground,
-    Flying,
-    Psychic,
-    Bug,
-    Rock,
-    Ghost,
-    Dragon,
-    Dark,
-    Steel,
-    Fairy
+    None,    Nomal,    Fire,    Water,    Electric,    Grass,    Ice,    Fighting,    Poison,    Ground,
+    Flying,    Psychic,    Bug,    Rock,    Ghost,    Dragon,    Dark,    Steel,    Fairy
 }
 
 public enum GrowthRate
@@ -173,17 +172,12 @@ public enum GrowthRate
 
 public enum Stat
 {
-    Attack,
-    Defense,
-    SpAttack,
-    SpDefense,
-    Speed,
+    Attack,    Defense,    SpAttack,    SpDefense,    Speed,
 
    /* 2 thuộc tính này dùng để xác định độ chính xác khi tung kỹ năng xem nó trúng hay 
     * không, và chỉ số nào chỉ thay đổi bởi một số kỹ năng tăng lên hoặc thuộc tính chứ 
     * không thay dổi bởi cấp độ của pokemon*/ 
-    Accuracy,
-    Evasion
+    Accuracy,    Evasion
 }
 
 public class TypeChart

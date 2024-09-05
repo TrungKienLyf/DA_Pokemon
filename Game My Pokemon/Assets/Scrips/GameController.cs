@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] InventoryUI inventoryUI;
 
     GameState state;
-    GameState stateBeforePause;
+    GameState prewState;
 
     public SceneDetails CurrentScene { get; private set; }
     public SceneDetails PrevScene { get; private set; }
@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
         PokemonDB.Init();
         MoveDB.Init();
         ConditionsDB.Init();
+        ItemDB.Init();
+        QuestDB.Init();
     }
 
     private void Start()
@@ -41,13 +43,14 @@ public class GameController : MonoBehaviour
 
         DialogManager.Instance.OnShowDialog += () =>
         {
+            prewState = state;
             state = GameState.Dialog;
         };
 
-        DialogManager.Instance.OnCloseDialog += () =>
+        DialogManager.Instance.OnDialogFinished += () =>
         {
             if(state == GameState.Dialog)
-            state = GameState.FreeRoam;
+            state = prewState;
         };
         menuController.onBack += () =>
         {
@@ -60,12 +63,12 @@ public class GameController : MonoBehaviour
     {
         if (pause)
         {
-            stateBeforePause = state;
+            prewState = state;
             state = GameState.Paused;
         }
         else
         {
-            state = stateBeforePause;
+            state = prewState;
         }
     }
 
@@ -114,6 +117,8 @@ public class GameController : MonoBehaviour
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
 
+        var playerParty = playerController.GetComponent<PokemonParty>();
+        StartCoroutine(playerParty.CheckForEvolutions());
     }
 
     private void Update()
@@ -200,5 +205,7 @@ public class GameController : MonoBehaviour
         }
         
     }
+
+    public GameState State => state;
 
 }

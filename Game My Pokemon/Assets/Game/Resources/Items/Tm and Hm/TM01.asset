@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ae2c0847eda32428025b4a1a1743da, type: 3}
+  m_Name: TM01
+  m_EditorClassIdentifier: 
+  itemName: HM01
+  description: Giup pokemon hoc duoc ky nang Poison Powder
+  icon: {fileID: 1766885144, guid: 1f14a33d54e807d4d8d7f1d50794291c, type: 3}
+  move: {fileID: 11400000, guid: 562f53b508b461f48aaf1ac31552a65e, type: 2}

@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour, ISavable
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Z))
-            Interact();
+           StartCoroutine(Interact());
     }
 
-    void Interact()
+    IEnumerator Interact()
     {
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;        
@@ -46,23 +46,31 @@ public class PlayerController : MonoBehaviour, ISavable
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
         if(collider != null)
         {
-            collider.GetComponent<Interactable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }
 
+    IPlayerTriggerable currentlyInTrigger;
     private void OnMoveOver()
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
-
+        IPlayerTriggerable triggerable = null;
         foreach (var collider in colliders)
         {
-            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            triggerable = collider.GetComponent<IPlayerTriggerable>();
             if (triggerable != null)
-            {                
+            {
+                if (triggerable == currentlyInTrigger && !triggerable.TriggerRepeatedly)
+                    break;
+
                 triggerable.OnPlayerTriggered(this);
+                currentlyInTrigger = triggerable;
                 break;
             }
         }
+
+        if (colliders.Count() == 0 || triggerable != currentlyInTrigger)
+            currentlyInTrigger = null;
     }
 
     public object CaptureState()

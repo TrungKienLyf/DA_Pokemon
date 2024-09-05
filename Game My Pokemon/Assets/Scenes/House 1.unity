@@ -1736,6 +1736,133 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &144899201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2598288894315077649, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_Name
+      value: 'NPC '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.701462
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.7519603
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3349367932211053418, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317581628065154357, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: uniqueId
+      value: f52509ee-1535-452b-80b0-d1ac2d823337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141625387140490087, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: questToComplete
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bf3ea883f85b3a41ac5cecfb5116ae0, type: 2}
+    - target: {fileID: 6141625387140490087, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141625387140490087, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: "Gi\u1EDD b\u1EA1n c\xF3 th\u1EC3 b\u1EAFt \u0111\u1EA7u h\xE0nh tr\xECnh
+        c\u1EE7a m\xECnh r\u1ED3i"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141625387140490087, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: "Ch\xFAc may m\u1EAFn, nh\xE0 hu\u1EA5n luy\u1EC7n tr\u1EBB."
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2598288894315077649, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144899204}
+    - targetCorrespondingSourceObject: {fileID: 2598288894315077649, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144899203}
+  m_SourcePrefab: {fileID: 100100000, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+--- !u!1 &144899202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2598288894315077649, guid: f7fc6b70a0fd36c449f3c65b1e5e6b4a, type: 3}
+  m_PrefabInstance: {fileID: 144899201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &144899203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144899202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06a66ebbf243404e9aac2bf2a5956b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonToGive:
+    _base: {fileID: 11400000, guid: 4e6bfc696ea7b5644b6539fe6a660f3f, type: 2}
+    level: 5
+  dialog:
+    lines:
+    - "R\u1EA5t kh\xF3 n\u1EBFu tr\xEAn h\xE0nh tr\xECnh th\xE1m hi\u1EC3m kh\xF4ng
+      c\xF3 pokemon \u0111\u1ED3ng h\xE0nh"
+    - "B\u1EA1n c\xF3 th\u1EC3  nh\u1EADn l\u1EA5y Bulbasaur m\u1EDBi n\u1EDF c\u1EE7a
+      t\xF4i"
+    - "H\xE3y \u0111\u1ED1i s\u1EED v\u1EDBi n\xF3 th\u1EADt t\u1ED1t nh\xE9"
+--- !u!114 &144899204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144899202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9495769bb048846a7aedd9b74f078f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  count: 1
+  dialog:
+    lines: []
 --- !u!1 &254676956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,3 +6356,4 @@ SceneRoots:
   - {fileID: 1316953951020485561}
   - {fileID: 409535535}
   - {fileID: 1720272933}
+  - {fileID: 144899201}

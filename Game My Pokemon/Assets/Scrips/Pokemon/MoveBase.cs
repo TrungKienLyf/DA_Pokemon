@@ -22,60 +22,36 @@ public class MoveBase : ScriptableObject
     [SerializeField] MoveTarget target;
 
     public string Name
-    {
-        get { return moveName; }
-    }
+    {   get { return moveName; }}
 
     public string Description
-    {
-        get { return description; }
-    }
+    {   get { return description; }}
 
     public PokemonType Type
-    {
-        get { return type; }
-    }
+    {get { return type; }}
 
     public int Power
-    {
-        get { return power; }
-    }
+    {   get { return power; }}
 
     public int Accuracy
-    {
-        get { return accuracy; }
-    }
+    {   get { return accuracy; }}
 
     public bool AlwaysHits
-    {
-        get { return alwaysHits; }
-    }
+    {   get { return alwaysHits; }}
 
     public int PP
-    {
-        get { return pp; }
-    }
+    {   get { return pp; }}
     public int Priority
-    {
-        get { return priority; }
-    }
+    {   get { return priority; }}
     public MoveCategory Category
-    {
-        get { return category; }
-    }
+    {    get { return category; }}
     public MoveEffects Effects
-    {
-        get { return effects; }
-    }
+    {   get { return effects; }}
     public List<SecondaryEffects> Secondaries
-    {
-        get { return secondaries; }
-    }
+    {   get { return secondaries; }}
 
     public MoveTarget Target
-    {
-        get { return target; }
-    }   
+    {   get { return target; }}   
 
 }
 
@@ -87,20 +63,13 @@ public class MoveEffects
     [SerializeField] ConditionID violatileStatus;
 
     public List<StatBoost> Boosts
-    {
-        get { return boosts; }
-
-    }
+    {   get { return boosts; }}
 
     public ConditionID Status
-    {
-        get { return status; }
-    }
+    {   get { return status; }}
 
     public ConditionID ViolatileStatus
-    {
-        get { return violatileStatus; }
-    }
+    {   get { return violatileStatus; }}
 }
 
 [System.Serializable]
@@ -129,9 +98,7 @@ public class StatBoost
 
 public enum MoveCategory
 {
-    Special,
-    Physical,
-    Status
+    Special,    Physical,    Status
 }
 
 public enum MoveTarget

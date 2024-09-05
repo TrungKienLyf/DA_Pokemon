@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Poison powder
   description: 
-  type: 0
+  type: 8
   power: 0
   accuracy: 100
+  alwaysHits: 0
   pp: 40
+  priority: 0
   category: 2
   effects:
     boosts: []
     status: 1
+    violatileStatus: 0
+  secondaries: []
   target: 0
