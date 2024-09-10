@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused }
+public enum GameState { FreeRoam, Battle, Dialog, Menu, PartyScreen, Bag, Cutscene, Paused, Evolution, Shop }
 
 public class GameController : MonoBehaviour
 {
@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour
     [SerializeField] InventoryUI inventoryUI;
 
     GameState state;
-    GameState prewState;
+    GameState prevState;
+    GameState stateBeforeEvolution;
 
     public SceneDetails CurrentScene { get; private set; }
     public SceneDetails PrevScene { get; private set; }
@@ -43,32 +44,48 @@ public class GameController : MonoBehaviour
 
         DialogManager.Instance.OnShowDialog += () =>
         {
-            prewState = state;
+            prevState = state;
             state = GameState.Dialog;
         };
 
         DialogManager.Instance.OnDialogFinished += () =>
         {
             if(state == GameState.Dialog)
-            state = prewState;
+            state = prevState;
         };
         menuController.onBack += () =>
         {
             state = GameState.FreeRoam;
         };
         menuController.onMenuSelected += OnMenuSelected;
+
+        EvolutionManager.i.OnStartEvolution += () =>
+        {
+            stateBeforeEvolution = state;
+            state = GameState.Evolution;
+        };
+        EvolutionManager.i.OnCompleteEvolution += () =>
+        {
+            partyScreen.SetPartyData();
+            state = stateBeforeEvolution;
+
+            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
+        };
+
+        ShopController.i.OnStart += () => state = GameState.Shop;
+        ShopController.i.OnFinish += () => state = GameState.FreeRoam;
     }
 
     public void PauseGame(bool pause)
     {
         if (pause)
         {
-            prewState = state;
+            prevState = state;
             state = GameState.Paused;
         }
         else
         {
-            state = prewState;
+            state = prevState;
         }
     }
 
@@ -113,12 +130,20 @@ public class GameController : MonoBehaviour
             trainer.BattleLost();
             trainer = null;
         }
+
+        partyScreen.SetPartyData();
+
         state = GameState.FreeRoam;
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
 
         var playerParty = playerController.GetComponent<PokemonParty>();
-        StartCoroutine(playerParty.CheckForEvolutions());
+        bool hasEvolutions = playerParty.CheckForEvolutions();
+
+        if (hasEvolutions)
+            StartCoroutine(playerParty.RunEvolutions());
+        else
+            AudioManager.i.PlayMusic(CurrentScene.SceneMusic, fade: true);
     }
 
     private void Update()
@@ -168,6 +193,10 @@ public class GameController : MonoBehaviour
 
             inventoryUI.HandleUpdate(onBack);
         }
+        else if (state == GameState.Shop)
+        {
+            ShopController.i.HandleUpdate();
+        }
 
     }
 
@@ -202,8 +231,19 @@ public class GameController : MonoBehaviour
             //load
             SavingSystem.i.Load("saveSlot");
             state = GameState.FreeRoam;
-        }
-        
+        }        
+    }
+
+    public IEnumerator MoveCamera(Vector2 moveOffset, bool waitForFadeOut = false)
+    {
+        yield return Fader.i.FadeIn(0.5f);
+
+        worldCamera.transform.position += new Vector3(moveOffset.x, moveOffset.y);
+
+        if (waitForFadeOut)
+            yield return Fader.i.FadeOut(0.5f);
+        else
+            StartCoroutine(Fader.i.FadeOut(0.5f));
     }
 
     public GameState State => state;

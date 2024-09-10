@@ -107,7 +107,11 @@ public class Pokemon
         Stats.Add(Stat.SpDefense, Mathf.FloorToInt((Base.SpDefense * Level * 2) / 100f) + 5);
         Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.Speed * Level * 2) / 100f) + 5);
 
+        int oldMaxHP = MaxHp;
         MaxHp = Mathf.FloorToInt((Base.MaxHp * Level * 2 ) / 100f) +Level + 10;
+
+        if (oldMaxHP != 0) 
+            HP += MaxHp - oldMaxHP;
     }
 
     void ResetStatBoost()
@@ -162,6 +166,7 @@ public class Pokemon
         if (Exp > Base.GetExpForLevel(level + 1)) 
         {
             ++level;
+            CalculateStats();
             return true;
         }
 
@@ -188,13 +193,26 @@ public class Pokemon
 
     public Evolution CheckForEvolution()
     {
-        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel == level);
+        return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level);
+    }
+    
+    public Evolution CheckForEvolution(ItemBase item)
+    {
+        return Base.Evolutions.FirstOrDefault(e => e.RequiredItem == item);
     }
 
     public void Evolve(Evolution evolution)
     {
         _base = evolution.EvolvesInfo;
         CalculateStats();
+    }
+
+    public void Heal()
+    {
+        HP = MaxHp;
+        OnHPChanged?.Invoke();
+
+        CureStatus();
     }
     public int MaxHp { get; private set; }
 

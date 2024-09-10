@@ -45,18 +45,25 @@ public class PokemonParty : MonoBehaviour
         }
     }
 
-    public IEnumerator CheckForEvolutions()
+    public bool CheckForEvolutions()
+    {
+        return pokemons.Any(p => p.CheckForEvolution() != null);
+    }
+
+    public IEnumerator RunEvolutions()
     {
         foreach(var pokemon in pokemons)
         {
             var evolution = pokemon.CheckForEvolution();
             if(evolution != null)
             {
-                yield return DialogManager.Instance.ShowDialogText($"{pokemon.Base.Name} tiến hóa thành {evolution.EvolvesInfo.Name}");
-                pokemon.Evolve(evolution);
+                yield return EvolutionManager.i.Evolve(pokemon, evolution);
             }
         }
+    }
 
+    public void PartyUpdated()
+    {
         OnUpdated?.Invoke();
     }
 

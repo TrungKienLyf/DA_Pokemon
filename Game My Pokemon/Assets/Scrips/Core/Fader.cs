@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
+    public static Fader i { get; private set; }
     Image image;
     private void Awake()
     {
+        i = this;
         image = GetComponent<Image>();
     }
 

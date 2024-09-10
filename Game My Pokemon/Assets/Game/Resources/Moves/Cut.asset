@@ -27,3 +27,4 @@ MonoBehaviour:
     violatileStatus: 0
   secondaries: []
   target: 0
+  sound: {fileID: 8300000, guid: 63811d25c97caa34d9fdf68f4b0079a1, type: 3}

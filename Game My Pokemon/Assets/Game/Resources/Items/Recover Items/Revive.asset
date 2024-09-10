@@ -16,6 +16,8 @@ MonoBehaviour:
   description: "H\u1ED3i ph\u1EE5c cho pokemon \u0111\xE3 b\u1EA5t t\u1EC9nh v\u1EDBi
     50% HP"
   icon: {fileID: 425354767, guid: ba492f3b8e42f2d43b2aafa07a929bd2, type: 3}
+  price: 2000
+  isSellable: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 0

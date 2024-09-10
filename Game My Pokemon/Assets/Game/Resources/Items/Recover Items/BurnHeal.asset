@@ -15,6 +15,8 @@ MonoBehaviour:
   itemName: Burn Heal
   description: "Ch\u1EEFa tr\u1ECB tr\u1EA1ng th\xE1i b\u1ECFng cho pokemon"
   icon: {fileID: 1882811641, guid: ba492f3b8e42f2d43b2aafa07a929bd2, type: 3}
+  price: 600
+  isSellable: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 0

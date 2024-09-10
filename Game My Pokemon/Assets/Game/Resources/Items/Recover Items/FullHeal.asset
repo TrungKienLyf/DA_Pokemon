@@ -15,6 +15,8 @@ MonoBehaviour:
   itemName: Full Heal
   description: "Kh\xF4i ph\u1EE5c t\u1EA5t c\u1EA3 tr\u1EA1ng th\xE1i b\u1EA5t l\u1ECDi"
   icon: {fileID: 422736669, guid: ba492f3b8e42f2d43b2aafa07a929bd2, type: 3}
+  price: 1000
+  isSellable: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 0

@@ -16,6 +16,8 @@ MonoBehaviour:
   description: "H\u1ED3i ph\u1EE5c 5 PP cho c\xE1c k\u1EF9 n\u0103ng c\u1EE7a m\u1ED9t
     pokemon"
   icon: {fileID: 1366594824, guid: ba492f3b8e42f2d43b2aafa07a929bd2, type: 3}
+  price: 400
+  isSellable: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 5

@@ -27,3 +27,4 @@ MonoBehaviour:
     violatileStatus: 0
   secondaries: []
   target: 0
+  sound: {fileID: 0}

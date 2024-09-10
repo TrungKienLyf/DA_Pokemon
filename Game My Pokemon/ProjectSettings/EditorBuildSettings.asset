@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town 2.unity
     guid: e3a91052c0ae0f1439bb6bf3f31cfb4e
+  - enabled: 1
+    path: Assets/Scenes/VioletTown.unity
+    guid: cd2d7eaf70b62e448886028a51b1c898
   m_configObjects: {}
