@@ -10,13 +10,11 @@ public class PlayerController : MonoBehaviour, ISavable
     [SerializeField] Sprite sprite;
 
     private Vector2 input;
-
     private Character character;
     private void Awake()
     {
         character = GetComponent<Character>();
     }
-
     public void HandleUpdate()
     {
         if (!character.IsMoving)
@@ -31,19 +29,17 @@ public class PlayerController : MonoBehaviour, ISavable
                 StartCoroutine(character.Move(input, OnMoveOver));
             }
         }
-
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Z))
            StartCoroutine(Interact());
     }
-
     IEnumerator Interact()
     {
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;        
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer | GameLayers.i.WaterLayer);
         if(collider != null)
         {
             yield return collider.GetComponent<Interactable>()?.Interact(transform);

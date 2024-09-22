@@ -20,7 +20,7 @@ TagManager:
   - FovLayer
   - Portal
   - Triggers
-  - 
+  - Ledges
   - 
   - 
   - 
@@ -47,7 +47,7 @@ TagManager:
   - name: Foreground
     uniqueID: 1790772007
     locked: 0
-  - name: Player
+  - name: Objects
     uniqueID: 392822243
     locked: 0
   - name: Battle

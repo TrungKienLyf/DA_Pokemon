@@ -174,8 +174,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: 4e6bfc696ea7b5644b6539fe6a660f3f, type: 2}
-    level: 20
+  - pokemon: {fileID: 11400000, guid: 4e6bfc696ea7b5644b6539fe6a660f3f, type: 2}
+    levelRange: {x: 3, y: 3}
+    changePercentage: 60
+  - pokemon: {fileID: 11400000, guid: daaf2c48e175f90418a444d4e8e02e4d, type: 2}
+    levelRange: {x: 5, y: 7}
+    changePercentage: 30
+  - pokemon: {fileID: 11400000, guid: e752089a17413a34cbf7f817fbbf582c, type: 2}
+    levelRange: {x: 4, y: 7}
+    changePercentage: 10
+  wildPokemonsInWater:
+  - pokemon: {fileID: 11400000, guid: daaf2c48e175f90418a444d4e8e02e4d, type: 2}
+    levelRange: {x: 5, y: 7}
+    changePercentage: 100
+  totalChance: 100
+  totalChanceInWater: 100
 --- !u!1 &637742065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7738572213218499082, guid: 7943de87591ee8248b677ef85b888da5, type: 3}
@@ -194,6 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons: []
+  wildPokemonsInWater: []
+  totalChance: -1
+  totalChanceInWater: -1
 --- !u!114 &839657867 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7656247927105638550, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
@@ -398,8 +414,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: 4e6bfc696ea7b5644b6539fe6a660f3f, type: 2}
-    level: 5
+  - pokemon: {fileID: 0}
+    levelRange: {x: 0, y: 0}
+    changePercentage: 0
+  wildPokemonsInWater: []
+  totalChance: 0
+  totalChanceInWater: -1
 --- !u!114 &984453069 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 330047865917486043, guid: 7943de87591ee8248b677ef85b888da5, type: 3}
@@ -447,13 +467,129 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfUpSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfDownSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfLeftSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfRightSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfUpSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -387312462, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfUpSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1994273616, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfUpSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 1323594589, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfUpSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -1212774181, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfDownSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 1442169781, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfDownSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1331889263, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfDownSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -702704132, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfDownSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 1447379054, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfLeftSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -1290674095, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfLeftSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -1299279609, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfLeftSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -1185304562, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfLeftSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -1917934860, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfRightSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 485043660, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfRightSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 1158668818, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfRightSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 2113155346, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 57944207323279091, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: surfRightSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: -369639778, guid: 6a6183c357f7c7d4bb22cdb935df833a, type: 3}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: pokemons.Array.data[0]._base
       value: 
       objectReference: {fileID: 11400000, guid: e752089a17413a34cbf7f817fbbf582c, type: 2}
     - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: pokemons.Array.data[0].level
-      value: 15
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: daaf2c48e175f90418a444d4e8e02e4d, type: 2}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[1].level
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[2]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: e1bc103f784467546bf9dba68fbaac2c, type: 2}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[2].level
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[3]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c002c03722e0ff4da30dbf7e1c1ce2d, type: 2}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[3].level
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[4]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e6bfc696ea7b5644b6539fe6a660f3f, type: 2}
+    - target: {fileID: 112391523117526715, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: pokemons.Array.data[4].level
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 125199109360462953, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -726,6 +862,10 @@ PrefabInstance:
     - target: {fileID: 599349330592847466, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -175
+      objectReference: {fileID: 0}
+    - target: {fileID: 615967506915408427, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: waterLayer.m_Bits
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 632195111351548591, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2501,7 +2641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: tmSlots.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: pokeballSlots.Array.size
@@ -2532,6 +2672,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c513de7f52d2db749808126f0865ad7d, type: 2}
     - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: tmSlots.Array.data[3].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 460119c1d0eb63642a971c98ea8d1fe6, type: 2}
+    - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: tmSlots.Array.data[0].count
       value: 1
       objectReference: {fileID: 0}
@@ -2541,6 +2685,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: tmSlots.Array.data[2].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: tmSlots.Array.data[3].count
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2575822170096229756, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
@@ -5271,6 +5419,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6040918351854015322, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040918351854015322, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6108938752775535754, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -6583,6 +6739,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7918669547986362958, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: moveSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7924021191447447052, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6978,6 +7138,10 @@ PrefabInstance:
     - target: {fileID: 8398175197671807032, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400733874696831380, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8403804674090307714, guid: 0a082ed8f015fe0488b072c9efa8696b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7781,8 +7945,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemons:
-  - _base: {fileID: 11400000, guid: e752089a17413a34cbf7f817fbbf582c, type: 2}
-    level: 7
+  - pokemon: {fileID: 11400000, guid: e752089a17413a34cbf7f817fbbf582c, type: 2}
+    levelRange: {x: 3, y: 7}
+    changePercentage: 70
+  - pokemon: {fileID: 11400000, guid: 4a786f39f7d380e4487588ecdc0ce182, type: 2}
+    levelRange: {x: 7, y: 9}
+    changePercentage: 30
+  wildPokemonsInWater: []
+  totalChance: 100
+  totalChanceInWater: -1
 --- !u!1001 &1720272933
 PrefabInstance:
   m_ObjectHideFlags: 0

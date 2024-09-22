@@ -1869,7 +1869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4244972481903831271
 Transform:
   m_ObjectHideFlags: 0
@@ -1911,6 +1911,12 @@ MonoBehaviour:
   wildBattleMusic: {fileID: 8300000, guid: 864f8fd9498840347b33d6be317e96be, type: 3}
   trainerBattleMusic: {fileID: 8300000, guid: 397f2d5197d0b494dbac0dff1b6b925a, type: 3}
   battleVictoryMusic: {fileID: 8300000, guid: 00aed915a22175442884bef4bd45c567, type: 3}
+  backgroundImage: {fileID: 2326943400558397042}
+  grassBackground: {fileID: 508750984, guid: af198fadabb60a645a4500cfa59e9fe9, type: 3}
+  waterBackground: {fileID: 1414874618, guid: af198fadabb60a645a4500cfa59e9fe9, type: 3}
+  fieldImage: {fileID: 7974771071488076039}
+  grassField: {fileID: -1434561214, guid: 91eefb4f341633c49b6052e7b7bbd89d, type: 3}
+  waterField: {fileID: -298743719, guid: 91eefb4f341633c49b6052e7b7bbd89d, type: 3}
 --- !u!1 &5339318588947704771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,6 +3244,12 @@ MonoBehaviour:
   triggersLayer:
     serializedVersion: 2
     m_Bits: 16384
+  ledgeLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6779140743669788952
 MonoBehaviour:
   m_ObjectHideFlags: 0

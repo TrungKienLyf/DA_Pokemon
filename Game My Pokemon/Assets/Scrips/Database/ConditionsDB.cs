@@ -10,7 +10,6 @@ public class ConditionsDB
         {
             var conditionId = kvp.Key;
             var condition = kvp.Value;
-
             condition.Id = conditionId;
         }
     }
@@ -74,7 +73,6 @@ public class ConditionsDB
                         pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} không còn bị đóng băng nữa");
                         return true;
                     }
-
                     return false;
                 }
             }
@@ -105,7 +103,6 @@ public class ConditionsDB
                 }
             }
         },
-
         {
             ConditionID.confusion,
             new Condition()

@@ -6,16 +6,12 @@ using UnityEngine;
 public class PokemonBase : ScriptableObject
 {
     [SerializeField] string namepkm;
-
     [TextArea]
     [SerializeField] string description;
-
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
-
     [SerializeField] PokemonType type1;
     [SerializeField] PokemonType type2;
-
     // Base Stats
     [SerializeField] int maxHp;
     [SerializeField] int attack;
@@ -23,19 +19,13 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spAttack;
     [SerializeField] int spDefense;
     [SerializeField] int speed;
-
     [SerializeField] int expYield;
     [SerializeField] GrowthRate growthRate;
-
     [SerializeField] int catchRate = 255;
-
     [SerializeField] List<LearnableMove> learnableMoves;
     [SerializeField] List<MoveBase> learnableByItems;
-
     [SerializeField] List<Evolution> evolutions;
-
     public static int MaxNumOfMoves { get; set; } = 4;
-
     public int GetExpForLevel(int level)
     {
         if (growthRate == GrowthRate.Fast)

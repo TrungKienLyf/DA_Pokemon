@@ -6,10 +6,8 @@ using UnityEngine;
 public class MoveBase : ScriptableObject
 {
     [SerializeField] string moveName;
-
     [TextArea]
     [SerializeField] string description;
-
     [SerializeField] PokemonType type;
     [SerializeField] int power;
     [SerializeField] int accuracy;
@@ -20,27 +18,19 @@ public class MoveBase : ScriptableObject
     [SerializeField] MoveEffects effects;
     [SerializeField] List<SecondaryEffects> secondaries;
     [SerializeField] MoveTarget target;
-
     [SerializeField] AudioClip sound;
-
     public string Name
     {   get { return moveName; }}
-
     public string Description
     {   get { return description; }}
-
     public PokemonType Type
     {get { return type; }}
-
     public int Power
     {   get { return power; }}
-
     public int Accuracy
     {   get { return accuracy; }}
-
     public bool AlwaysHits
     {   get { return alwaysHits; }}
-
     public int PP
     {   get { return pp; }}
     public int Priority

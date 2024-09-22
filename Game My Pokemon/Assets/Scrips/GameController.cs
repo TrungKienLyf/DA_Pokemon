@@ -89,18 +89,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-   public void StartBattle()
+   public void StartBattle(BattleTrigger trigger)
     {
         state = GameState.Battle;
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
         var playerParty = playerController.GetComponent<PokemonParty>();
-        var wildPokemon = CurrentScene.GetComponent<MapArea>().GetRandomWildPokemon();
+        var wildPokemon = CurrentScene.GetComponent<MapArea>().GetRandomWildPokemon(trigger);
 
         var wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
 
-        battleSystem.StartBattle(playerParty, wildPokemonCopy);
+        battleSystem.StartBattle(playerParty, wildPokemonCopy, trigger);
     }
 
     TrainerController trainer;

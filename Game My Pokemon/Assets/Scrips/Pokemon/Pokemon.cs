@@ -8,12 +8,10 @@ public class Pokemon
 {
     [SerializeField] PokemonBase _base;
     [SerializeField] int level;
-
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         _base = pBase;
         level = pLevel;
-
         Init();
     }
     public PokemonBase Base
@@ -35,11 +33,9 @@ public class Pokemon
     public int StatusTime { get; set; }
     public Condition VolatileStatus { get; private set; }
     public int VolatileStatusTime { get; set; }
-
     public Queue<string> StatusChanges { get; private set; } 
     public event System.Action OnStatusChanged;
     public event System.Action OnHPChanged;
-
     public void Init()
     {
         Moves = new List<Move>();
@@ -109,7 +105,6 @@ public class Pokemon
 
         int oldMaxHP = MaxHp;
         MaxHp = Mathf.FloorToInt((Base.MaxHp * Level * 2 ) / 100f) +Level + 10;
-
         if (oldMaxHP != 0) 
             HP += MaxHp - oldMaxHP;
     }
@@ -127,7 +122,6 @@ public class Pokemon
             {Stat.Evasion, 0},
         };
     }
-
     int GetStat(Stat stat)
     {
         int statVal = Stats[stat];
@@ -139,10 +133,8 @@ public class Pokemon
             statVal = Mathf.FloorToInt(statVal * boostValues[boost]);
         else
             statVal = Mathf.FloorToInt(statVal / boostValues[-boost]);
-
         return statVal;
     }
-
     public void ApplyBoosts(List<StatBoost> statBoosts)
     {
         foreach (var statBoost in statBoosts)
@@ -169,49 +161,39 @@ public class Pokemon
             CalculateStats();
             return true;
         }
-
         return false;
     }
-
     public LearnableMove GetLearnableMoveAtCurrLevel()
     {
         return Base.LearnableMoves.Where(x => x.Level == level).FirstOrDefault();
     }
-
     public void LearnMove(MoveBase moveToLearn)
     {
         if (Moves.Count > PokemonBase.MaxNumOfMoves)
             return;
-
         Moves.Add(new Move(moveToLearn));
     }
-
     public bool HasMove(MoveBase moveToCheck)
     {
         return Moves.Count(m => m.Base == moveToCheck) > 0;
     }
-
     public Evolution CheckForEvolution()
     {
         return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level);
-    }
-    
+    }    
     public Evolution CheckForEvolution(ItemBase item)
     {
         return Base.Evolutions.FirstOrDefault(e => e.RequiredItem == item);
     }
-
     public void Evolve(Evolution evolution)
     {
         _base = evolution.EvolvesInfo;
         CalculateStats();
     }
-
     public void Heal()
     {
         HP = MaxHp;
         OnHPChanged?.Invoke();
-
         CureStatus();
     }
     public int MaxHp { get; private set; }
@@ -252,14 +234,12 @@ public class Pokemon
             critical = 2f;
 
         float type = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
-
         var damageDetails = new DamageDetails()
         {
             TypeEffectiveness = type,
             Critical = critical,
             Fainted = false
         };
-
         float attack = (move.Base.Category == MoveCategory.Special) ? attacker.SpAttack : attacker.Attack;
         float defense = (move.Base.Category == MoveCategory.Special) ? SpDefense : Defense;
 
@@ -268,39 +248,32 @@ public class Pokemon
         float d = a * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        DecreaseHP(damage);
-        
+        DecreaseHP(damage);        
         return damageDetails;
     }
-
     public void IncreaseHP(int amount)
     {
         HP = Mathf.Clamp(HP + amount, 0, MaxHp);
         OnHPChanged?.Invoke();
     }
-
     public void DecreaseHP(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
         OnHPChanged?.Invoke();
     }
-
     public void SetStatus(ConditionID conditionId)
     {
         if (Status != null) return;
-
         Status = ConditionsDB.Conditions[conditionId];
         Status?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
         OnStatusChanged?.Invoke();
     }
-
     public void CureStatus()
     {
         Status = null;
         OnStatusChanged?.Invoke();
     }   
-
     public void SetVolatileStatus(ConditionID conditionId)
     {
         if (VolatileStatus != null) return;
@@ -309,7 +282,6 @@ public class Pokemon
         VolatileStatus?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}");
     }
-
     public void CureVolatileStatus()
     {
         VolatileStatus = null;

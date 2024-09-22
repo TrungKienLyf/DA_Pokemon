@@ -10,12 +10,15 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     [SerializeField] Dialog dialogAfterBattle;
     [SerializeField] GameObject exclamation;
     [SerializeField] GameObject fov;
+    [SerializeField] float money;
 
     [SerializeField] AudioClip trainerAppearsClip;
 
     // State
     bool battleLost = false;
     Character character;
+
+    public static TrainerController i { get; private set; }
     private void Awake()
     {
         character = GetComponent<Character>();
@@ -35,12 +38,13 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     {
         character.LookTowards(initiator.position);
 
-        if (!battleLost)
+       
+        if (!battleLost )
         {
             AudioManager.i.PlayMusic(trainerAppearsClip);
 
             yield return DialogManager.Instance.ShowDialog(dialog);
-            GameController.Instance.StartTrainerBattle(this);            
+            GameController.Instance.StartTrainerBattle(this);
         }
         else
         {
@@ -49,7 +53,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     }
 
     public IEnumerator TriggerTrainerBattle(PlayerController player)
-    {
+    {        
         AudioManager.i.PlayMusic(trainerAppearsClip);
 
         // Show cảm thán
@@ -67,7 +71,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
         // Show trò chuyện
         yield return DialogManager.Instance.ShowDialog(dialog);
         GameController.Instance.StartTrainerBattle(this);
-        
+
     }
 
     public void BattleLost()
@@ -96,7 +100,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
     public void RestoreState(object state)
     {
-         battleLost = (bool)state;
+        battleLost = (bool)state;
 
         if (battleLost)
         {
@@ -112,5 +116,9 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     public Sprite Sprite
     {
         get => sprite;
+    }
+    public float Money
+    {
+        get => money;
     }
 }

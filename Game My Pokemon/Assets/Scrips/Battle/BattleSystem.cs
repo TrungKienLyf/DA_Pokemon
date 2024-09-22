@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Bag, PartyScreen, AboutToUse, MoveToForget, BattleOver }
 public enum BattleAction { Move, SwitchPokemon, UseItem, Run }
 
+public enum BattleTrigger { LongGrass, Water}
+
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
@@ -26,55 +28,63 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] AudioClip trainerBattleMusic;
     [SerializeField] AudioClip battleVictoryMusic;
 
+    [Header("Background Images")]
+    [SerializeField] Image backgroundImage;
+    [SerializeField] Sprite grassBackground;
+    [SerializeField] Sprite waterBackground;
+    [SerializeField] Image fieldImage;
+    [SerializeField] Sprite grassField;
+    [SerializeField] Sprite waterField;
+
 
     public event Action<bool> OnBattleOver;
-
     BattleState state;
     int currentAction;
     int currentMove;
     bool aboutToUseChoice = true;
-
     PokemonParty playerParty;
     PokemonParty trainerParty;
     Pokemon wildPokemon;
-
     bool isTrainerBattle = false;
     PlayerController player;
     TrainerController trainer;
-
     int escapeAttempts;
     MoveBase moveToLearn;
+    BattleTrigger battleTrigger;
 
-    public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon)
-    {
-        this.playerParty = playerParty;
-        this.wildPokemon = wildPokemon;
-        player = playerParty.GetComponent<PlayerController>();
-        isTrainerBattle = false;
-
-        AudioManager.i.PlayMusic(wildBattleMusic);
-
-        StartCoroutine(SetupBattle());
+    public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon,
+         BattleTrigger trigger = BattleTrigger.LongGrass)
+    {        
+            this.playerParty = playerParty;
+            this.wildPokemon = wildPokemon;
+            player = playerParty.GetComponent<PlayerController>();
+            isTrainerBattle = false;
+            battleTrigger = trigger;
+            AudioManager.i.PlayMusic(wildBattleMusic);
+            StartCoroutine(SetupBattle());    
     }
 
-    public void StartTrainerBattle(PokemonParty playerParty, PokemonParty trainerParty)
-    {
-        this.playerParty = playerParty;
-        this.trainerParty = trainerParty;
-
-        isTrainerBattle = true;
-        player = playerParty.GetComponent<PlayerController>();
-        trainer = trainerParty.GetComponent<TrainerController>();
-
-        AudioManager.i.PlayMusic(trainerBattleMusic);
-
-        StartCoroutine(SetupBattle());
+    public void StartTrainerBattle(PokemonParty playerParty, PokemonParty trainerParty,
+        BattleTrigger trigger = BattleTrigger.LongGrass)
+    {        
+            this.playerParty = playerParty;
+            this.trainerParty = trainerParty;
+            isTrainerBattle = true;
+            player = playerParty.GetComponent<PlayerController>();
+            trainer = trainerParty.GetComponent<TrainerController>();
+            battleTrigger = trigger;
+            AudioManager.i.PlayMusic(trainerBattleMusic);
+            StartCoroutine(SetupBattle());
+        
     }
 
     public IEnumerator SetupBattle()
     {
         playerUnit.Clear();
         enemyUnit.Clear();
+
+        backgroundImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassBackground : waterBackground;
+        fieldImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassField : waterField;
 
         if (!isTrainerBattle)
         {
@@ -86,7 +96,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            // đấu vs Trianer 
+            // đấu vs Trainer 
             // Show trainer và player trc sau đó ms đến pkm
             playerUnit.gameObject.SetActive(false);
             enemyUnit.gameObject.SetActive(false);
@@ -134,20 +144,17 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetDialog("Chọn hành động kế tiếp");
         dialogBox.EnableActionSelector(true);
     }
-
     void OpenBag()
     {
         state = BattleState.Bag;
         inventoryUI.gameObject.SetActive(true);
     }
-
     void OpenPartyScreen()
     {
         partyScreen.CalledFrom = state;
         state = BattleState.PartyScreen;
         partyScreen.gameObject.SetActive(true);
     }
-
     void MoveSelection()
     {
         state = BattleState.MoveSelection;
@@ -155,16 +162,13 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
     }
-
     IEnumerator AboutToUse(Pokemon newPokemon)
     {
         state = BattleState.Busy;
         yield return dialogBox.TypeDialog($"{trainer.Name} sẽ đưa ra {newPokemon.Base.Name}. Bạn có muốn đổi pokemon không?");
-
         state = BattleState.AboutToUse;
         dialogBox.EnableChoiceBox(true);
     }
-
     IEnumerator ChooseMoveToForget(Pokemon pokemon, MoveBase newMove) 
     {
         state = BattleState.Busy;
@@ -172,10 +176,8 @@ public class BattleSystem : MonoBehaviour
         moveSelectionUI.gameObject.SetActive(true);
         moveSelectionUI.SetMoveData(pokemon.Moves.Select(x => x.Base).ToList(), newMove);
         moveToLearn = newMove;
-
         state = BattleState.MoveToForget;
     }
-
     IEnumerator RunTurns(BattleAction playerAction)
     {
         state = BattleState.RunningTurn;
@@ -184,10 +186,8 @@ public class BattleSystem : MonoBehaviour
         {
             playerUnit.Pokemon.CurrentMove = playerUnit.Pokemon.Moves[currentMove];
             enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
-
             int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
             int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
-
             // Check ai xem ai có chiêu thức ưu tiên cao hơn
             bool playerGoesFirst = true;
             if (enemyMovePriority > playerMovePriority)
@@ -195,19 +195,14 @@ public class BattleSystem : MonoBehaviour
             //nều cùng độ ưu tiên
             else if(enemyMovePriority == playerMovePriority)            
                 playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
-
             var firstUnit = (playerGoesFirst) ? playerUnit : enemyUnit;
             var secondUnit = (playerGoesFirst) ? enemyUnit : playerUnit;
-
             var secondPokemon = secondUnit.Pokemon;
-
             // Lượt tấn công của pokemon có speed cao hơn
             yield return RunMove(firstUnit, secondUnit, firstUnit.Pokemon.CurrentMove);
             yield return RunAfterTurn(firstUnit);
             if (state == BattleState.BattleOver) yield break;
-
-            if (secondPokemon.HP > 0)
-            {
+            if (secondPokemon.HP > 0)            {
                 // Lượt tấn công của pokemon có speed thấp hơn
                 yield return RunMove(secondUnit, firstUnit, secondUnit.Pokemon.CurrentMove);
                 yield return RunAfterTurn(secondUnit);
@@ -230,7 +225,6 @@ public class BattleSystem : MonoBehaviour
             {                
                 yield return TryToEscape();
             }
-
             // Lượt đói thủ
             var enemyMove = enemyUnit.Pokemon.GetRandomMove();
             yield return RunMove(enemyUnit, playerUnit, enemyMove);
@@ -381,26 +375,32 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{faintedUnit.Pokemon.Base.Name} đã bất tỉnh");
         faintedUnit.PlayFaintAnimation();
         yield return new WaitForSeconds(2f);
-
         if (!faintedUnit.IsPlayerUnit)
         {
             bool battleWon = true;
+            float money = 0;
             if (isTrainerBattle)
+            {
                 battleWon = trainerParty.GetHealthyPokemon() == null;
-
-            if(battleWon)
+                money = trainer.Money;
+            }             
+            if (battleWon && isTrainerBattle)
+            {
+                AudioManager.i.PlayMusic(battleVictoryMusic); 
+                Wallet.i.AddMoney(money);
+                yield return dialogBox.TypeDialog($"Bạn nhận được  {money}$ khi đánh thắng {trainer.Name}");
+            } else if (battleWon)
+            {
                 AudioManager.i.PlayMusic(battleVictoryMusic);
-
+            }    
             // Tăng Exp 
             int expYield = faintedUnit.Pokemon.Base.ExpYield;
             int enemyLevel = faintedUnit.Pokemon.Level;
             float trainerBonus = (isTrainerBattle) ? 1.5f : 1f;
-
             int expGain = Mathf.FloorToInt((expYield * enemyLevel * trainerBonus) / 7);
             playerUnit.Pokemon.Exp += expGain;
             yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} tăng thêm {expGain} kinh nghiệm");
             yield return playerUnit.Hud.SetExpSmooth();
-
             // Check Level Up
             while (playerUnit.Pokemon.CheckForLevelUp()) 
             {
@@ -416,7 +416,6 @@ public class BattleSystem : MonoBehaviour
                         playerUnit.Pokemon.LearnMove(newMove.Base);
                         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} đã học được kỹ năng {newMove.Base.Name}");
                         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
-
                     }
                     else
                     {
@@ -428,14 +427,10 @@ public class BattleSystem : MonoBehaviour
                         yield return new WaitForSeconds(2f);
                     }
                 }
-
                 yield return playerUnit.Hud.SetExpSmooth(true);
             }
-
-
             yield return new WaitForSeconds(1f);
         }
-
         CheckForBattleOver(faintedUnit);
     }
 
@@ -609,7 +604,6 @@ public class BattleSystem : MonoBehaviour
             ActionSelection();
         }
     }
-
     void HandlePartySelection()
     {
         Action onSelected = () =>

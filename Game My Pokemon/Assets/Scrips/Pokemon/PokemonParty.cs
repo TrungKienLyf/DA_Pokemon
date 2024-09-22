@@ -71,4 +71,14 @@ public class PokemonParty : MonoBehaviour
     {
         return FindObjectOfType<PlayerController>().GetComponent<PokemonParty>();
     }
+
+    public bool HasPokemonCanBattle()
+    {
+        int count = pokemons.Where(x => x.HP > 0).Count();
+        if (count != 0)
+            return true;
+        else
+            return false;
+
+    }
 }

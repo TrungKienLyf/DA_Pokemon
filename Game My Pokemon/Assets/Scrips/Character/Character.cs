@@ -34,8 +34,18 @@ public class Character : MonoBehaviour
         targetPos.x += moveVec.x;
         targetPos.y += moveVec.y;
 
+         var ledge = CheckForLedge(targetPos);
+        if(ledge != null)
+        {
+            if (ledge.TryToJump(this, moveVec))
+                yield break;
+        }
+
         if (!IsPathClear(targetPos))
             yield  break;
+
+        if (animator.IsSurfing && Physics2D.OverlapCircle(targetPos, 0.3f, GameLayers.i.WaterLayer) == null)
+            animator.IsSurfing = false;
 
         IsMoving = true;
 
@@ -61,7 +71,11 @@ public class Character : MonoBehaviour
         var diff = targetPos - transform.position;
         var dir = diff.normalized;
 
-        if (Physics2D.BoxCast(transform.position + dir, new Vector2(0.2f, 0.2f), 0f, dir, diff.magnitude - 1, GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer | GameLayers.i.PlayerLayer) == true)
+        var collisionLayer = GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer | GameLayers.i.PlayerLayer ;
+        if (!animator.IsSurfing)
+            collisionLayer = collisionLayer | GameLayers.i.WaterLayer;
+
+        if (Physics2D.BoxCast(transform.position + dir, new Vector2(0.2f, 0.2f), 0f, dir, diff.magnitude - 1, collisionLayer) == true)
             return false;
 
         return true;
@@ -75,6 +89,12 @@ public class Character : MonoBehaviour
         }
 
         return true;
+    }
+
+    Ledge CheckForLedge(Vector3 targetPos)
+    {
+        var collider = Physics2D.OverlapCircle(targetPos, 0.15f, GameLayers.i.LedgeLayyer);
+        return collider?.GetComponent<Ledge>();
     }
 
     public void LookTowards(Vector3 targetPos)

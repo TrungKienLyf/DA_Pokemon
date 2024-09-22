@@ -17,10 +17,8 @@ public class BattleHud : MonoBehaviour
     [SerializeField] Color slpColor;
     [SerializeField] Color parColor;
     [SerializeField] Color frzColor;
-
     Pokemon _pokemon;
     Dictionary<ConditionID, Color> statusColors;
-
     public void SetData(Pokemon pokemon)
     {
         if (_pokemon != null)
@@ -28,14 +26,11 @@ public class BattleHud : MonoBehaviour
             _pokemon.OnHPChanged -= UpdateHP;
             _pokemon.OnStatusChanged -= SetStatusText;
         }
-
         _pokemon = pokemon;
-
         nameText.text = pokemon.Base.Name;
         SetLevel();
         hpBar.SetHP((float) pokemon.HP / pokemon.MaxHp);
         SetExp();
-
         statusColors = new Dictionary<ConditionID, Color>()
         {
             {ConditionID.psn, psnColor },
@@ -44,12 +39,10 @@ public class BattleHud : MonoBehaviour
             {ConditionID.par, parColor },
             {ConditionID.frz, frzColor },
         };
-
         SetStatusText();
         _pokemon.OnStatusChanged += SetStatusText;
         _pokemon.OnHPChanged += UpdateHP;
     }
-
     void SetStatusText()
     {
         if (_pokemon.Status == null)
@@ -62,12 +55,10 @@ public class BattleHud : MonoBehaviour
             statusText.color = statusColors[_pokemon.Status.Id];
         }
     }
-
     public void SetLevel()
     {
         levelText.text = "Lvl " + _pokemon.Level;
-    }
-    
+    }    
     public void SetExp()
     {
         if (expBar == null) return;
